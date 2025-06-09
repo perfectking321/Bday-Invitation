@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Invitation</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#8b5cf6',secondary:'#4f46e5'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+background-color: #0f172a;
+min-height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+font-family: 'Cormorant Garamond', serif;
+}
+.invitation-card {
+background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(79, 70, 229, 0.1));
+backdrop-filter: blur(10px);
+border: 1px solid rgba(139, 92, 246, 0.2);
+position: relative;
+overflow: hidden;
+}
+.balloon {
+position: absolute;
+width: 60px;
+height: 75px;
+border-radius: 50%;
+animation: float 6s ease-in-out infinite;
+}
+.balloon::before {
+content: '';
+position: absolute;
+bottom: -12px;
+left: 50%;
+transform: translateX(-50%);
+width: 2px;
+height: 30px;
+background: rgba(255, 255, 255, 0.3);
+}
+.balloon-1 {
+background: linear-gradient(135deg, rgba(139, 92, 246, 0.4), rgba(79, 70, 229, 0.4));
+top: 20%;
+left: 10%;
+animation-delay: 0s;
+}
+.balloon-2 {
+background: linear-gradient(135deg, rgba(79, 70, 229, 0.4), rgba(139, 92, 246, 0.4));
+top: 15%;
+right: 10%;
+animation-delay: 1s;
+}
+.balloon-3 {
+background: linear-gradient(135deg, rgba(139, 92, 246, 0.4), rgba(79, 70, 229, 0.4));
+bottom: 15%;
+left: 15%;
+animation-delay: 2s;
+}
+.balloon-4 {
+background: linear-gradient(135deg, rgba(79, 70, 229, 0.4), rgba(139, 92, 246, 0.4));
+bottom: 20%;
+right: 15%;
+animation-delay: 3s;
+}
+.ribbon {
+position: absolute;
+width: 140px;
+height: 140px;
+border: 15px solid rgba(139, 92, 246, 0.2);
+border-radius: 50%;
+transform: rotate(-45deg);
+}
+.ribbon-1 {
+top: -30px;
+left: -30px;
+}
+.ribbon-2 {
+bottom: -30px;
+right: -30px;
+}
+@keyframes float {
+0%, 100% {
+transform: translateY(0);
+}
+50% {
+transform: translateY(-20px);
+}
+}
+.card-content {
+position: relative;
+z-index: 1;
+}
+.glass-effect {
+background: rgba(255, 255, 255, 0.03);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.1);
+padding: 2rem;
+margin: 1rem;
+}
+.floating-circle {
+position: absolute;
+border-radius: 50%;
+background: linear-gradient(45deg, rgba(139, 92, 246, 0.4), rgba(79, 70, 229, 0.4));
+filter: blur(80px);
+z-index: 0;
+}
+.circle-1 {
+width: 300px;
+height: 300px;
+top: -150px;
+left: -150px;
+}
+.circle-2 {
+width: 250px;
+height: 250px;
+bottom: -100px;
+right: -100px;
+background: linear-gradient(45deg, rgba(79, 70, 229, 0.4), rgba(139, 92, 246, 0.4));
+}
+.event-details {
+background: rgba(255, 255, 255, 0.03);
+border: 1px solid rgba(139, 92, 246, 0.2);
+border-radius: 12px;
+padding: 1.5rem;
+backdrop-filter: blur(5px);
+}
+.map-container {
+background: rgba(255, 255, 255, 0.05);
+backdrop-filter: blur(5px);
+}
+.feature-icon {
+width: 48px;
+height: 48px;
+background: rgba(139, 92, 246, 0.1);
+border: 1px solid rgba(139, 92, 246, 0.2);
+border-radius: 12px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-bottom: 0.5rem;
+}
+.age-display {
+position: absolute;
+top: 2rem;
+right: 2rem;
+width: 80px;
+height: 80px;
+background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(79, 70, 229, 0.2));
+border: 2px solid rgba(139, 92, 246, 0.3);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+backdrop-filter: blur(5px);
+}
+.shimmer {
+background: linear-gradient(90deg,
+rgba(255,255,255,0) 0%,
+rgba(255,255,255,0.1) 50%,
+rgba(255,255,255,0) 100%);
+background-size: 200% 100%;
+animation: shimmer 2s infinite;
+}
+@keyframes shimmer {
+0% { background-position: 200% 0; }
+100% { background-position: -200% 0; }
+}
+.star-particle {
+position: absolute;
+color: rgba(139, 92, 246, 0.6);
+pointer-events: none;
+z-index: 0;
+}
+.star-1 {
+top: 15%;
+left: 20%;
+font-size: 12px;
+animation: sparkle 3s ease-in-out infinite, float-drift 8s linear infinite;
+animation-delay: 0s;
+}
+.star-2 {
+top: 25%;
+right: 15%;
+font-size: 8px;
+animation: sparkle 2.5s ease-in-out infinite, float-drift 10s linear infinite reverse;
+animation-delay: 1s;
+}
+.star-3 {
+top: 60%;
+left: 10%;
+font-size: 10px;
+animation: sparkle 4s ease-in-out infinite, float-drift 12s linear infinite;
+animation-delay: 2s;
+}
+.star-4 {
+bottom: 30%;
+right: 25%;
+font-size: 14px;
+animation: sparkle 3.5s ease-in-out infinite, float-drift 9s linear infinite reverse;
+animation-delay: 0.5s;
+}
+.star-5 {
+top: 45%;
+left: 30%;
+font-size: 6px;
+animation: sparkle 2s ease-in-out infinite, float-drift 11s linear infinite;
+animation-delay: 1.5s;
+}
+.star-6 {
+top: 70%;
+right: 40%;
+font-size: 9px;
+animation: sparkle 3.2s ease-in-out infinite, float-drift 7s linear infinite reverse;
+animation-delay: 2.5s;
+}
+.star-7 {
+top: 35%;
+right: 35%;
+font-size: 11px;
+animation: sparkle 2.8s ease-in-out infinite, float-drift 13s linear infinite;
+animation-delay: 0.8s;
+}
+.star-8 {
+bottom: 15%;
+left: 25%;
+font-size: 7px;
+animation: sparkle 4.2s ease-in-out infinite, float-drift 10s linear infinite reverse;
+animation-delay: 3s;
+}
+@keyframes sparkle {
+0%, 100% {
+opacity: 0.2;
+transform: scale(0.8);
+}
+50% {
+opacity: 1;
+transform: scale(1.2);
+}
+}
+@keyframes float-drift {
+0% {
+transform: translateY(0px) translateX(0px) rotate(0deg);
+}
+25% {
+transform: translateY(-15px) translateX(10px) rotate(90deg);
+}
+50% {
+transform: translateY(-5px) translateX(-8px) rotate(180deg);
+}
+75% {
+transform: translateY(-20px) translateX(5px) rotate(270deg);
+}
+100% {
+transform: translateY(0px) translateX(0px) rotate(360deg);
+}
+}
+</style>
+</head>
+<body>
+<div class="invitation-card w-[500px] min-h-[700px] rounded-2xl">
+<div class="star-particle star-1">✨</div>
+<div class="star-particle star-2">⭐</div>
+<div class="star-particle star-3">✦</div>
+<div class="star-particle star-4">✨</div>
+<div class="star-particle star-5">⭐</div>
+<div class="star-particle star-6">✦</div>
+<div class="star-particle star-7">✨</div>
+<div class="star-particle star-8">⭐</div>
+<div class="balloon balloon-1"></div>
+<div class="balloon balloon-2"></div>
+<div class="balloon balloon-3"></div>
+<div class="balloon balloon-4"></div>
+<div class="ribbon ribbon-1"></div>
+<div class="ribbon ribbon-2"></div>
+<div class="floating-circle circle-1"></div>
+<div class="floating-circle circle-2"></div>
+<div class="card-content p-8">
+<div class="text-center mb-12 relative">
+<h2 class="text-primary text-sm tracking-[0.4em] uppercase font-light mb-3 shimmer">You're invited to</h2>
+<h1 class="text-white text-5xl font-['Playfair_Display'] font-bold mb-4">Birthday Celebration</h1>
+<div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent mx-auto"></div>
+</div>
+<div class="glass-effect text-center mb-10">
+<h3 class="text-white font-['Dancing_Script'] text-4xl mb-2">Join us in celebrating</h3>
+<h2 class="text-white text-3xl font-['Playfair_Display'] font-semibold mt-2">Syeda Firdosia</h2>
+</div>
+<div class="event-details mb-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="feature-icon">
+<i class="ri-calendar-line ri-xl text-primary"></i>
+</div>
+<div>
+<p class="text-gray-400 text-sm">Friday</p>
+<p class="text-white text-xl font-semibold">June 16th, 2025</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="feature-icon">
+<i class="ri-time-line ri-xl text-primary"></i>
+</div>
+<div>
+<p class="text-white text-xl font-semibold">7:00 PM - 11:00 PM</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="feature-icon">
+<i class="ri-map-pin-line ri-xl text-primary"></i>
+</div>
+<div>
+<p class="text-white text-xl font-semibold">Sunga & Sparta</p>
+<p class="text-gray-400 text-sm">3rd Floor, Heritage Udeshna</p>
+</div>
+</div>
+</div>
+<div class="lg:pl-4">
+<div class="map-container rounded-lg overflow-hidden border border-primary/20">
+<iframe 
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.7557005069225!2d91.79369128242227!3d26.139507333905584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375a594324fd28f3%3A0x45e32f5a7c9b1c9c!2sSunga%20%26%20Sparta!5e0!3m2!1sen!2snl!4v1749481499456!5m2!1sen!2snl"
+width="100%" 
+height="200" 
+style="border:0;" 
+allowfullscreen="" 
+loading="lazy" 
+referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+</div>
+<p class="text-gray-400 text-xs mt-2 text-center">Click to view in Google Maps</p>
+</div>
+</div>
+</div>
+<div class="glass-effect text-center">
+<h3 class="text-white text-xl font-semibold mb-6">The Evening Features</h3>
+<div class="flex justify-center gap-8">
+<div class="flex flex-col items-center">
+<div class="feature-icon">
+<i class="ri-music-2-line ri-xl text-primary"></i>
+</div>
+<p class="text-gray-300">Live Music</p>
+</div>
+<div class="flex flex-col items-center">
+<div class="feature-icon">
+<i class="ri-restaurant-line ri-xl text-primary"></i>
+</div>
+<p class="text-gray-300">Dinner</p>
+</div>
+<div class="flex flex-col items-center">
+<div class="feature-icon">
+<i class="ri-goblet-line ri-xl text-primary"></i>
+</div>
+<p class="text-gray-300">Beverages</p>
+</div>
+<div class="flex flex-col items-center">
+<div class="feature-icon">
+<i class="ri-music-fill ri-xl text-primary"></i>
+</div>
+<p class="text-gray-300">Dancing</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
